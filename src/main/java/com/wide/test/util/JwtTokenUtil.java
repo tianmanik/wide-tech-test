@@ -19,7 +19,7 @@ public class JwtTokenUtil implements Serializable {
 
 
 
-		private String secret = "ZtAtxAuQIKCPHzCGHxC4yuSyM1EP7TVQxPgYTio1iw162cqLnEQ0scLpkiXahYiHnURUBndih6vSFC9ceGObkA";
+	private String secret = "ZtAtxAuQIKCPHzCGHxC4yuSyM1EP7TVQxPgYTio1iw162cqLnEQ0scLpkiXahYiHnURUBndih6vSFC9ceGObkA";
 
 
 	public  String getEmailFromToken(String token) {

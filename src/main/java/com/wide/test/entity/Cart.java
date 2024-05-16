@@ -11,7 +11,7 @@ import lombok.Setter;
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "master_cart_id_seq_generator")
-    @SequenceGenerator(name = "master_cart_seq_generator", sequenceName = "master_cart_id_seq", allocationSize=1)    @Column(name = "id")
+    @SequenceGenerator(name = "master_cart_id_seq_generator", sequenceName = "master_cart_id_seq", allocationSize=1)    @Column(name = "id")
     private Long id;
 
     @Column(name = "user_name")

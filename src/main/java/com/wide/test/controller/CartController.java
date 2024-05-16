@@ -1,6 +1,8 @@
 package com.wide.test.controller;
 
 import com.wide.test.dto.CartDTO;
+import com.wide.test.dto.CartResponseDTO;
+import com.wide.test.entity.Cart;
 import com.wide.test.service.CartService;
 import com.wide.test.util.GenericResponseDTO;
 import com.wide.test.util.JwtTokenUtil;
@@ -19,11 +21,15 @@ public class CartController {
 	private JwtTokenUtil tokenUtil;
 
 	@PostMapping("/")
-	public GenericResponseDTO addCart (@RequestBody List<CartDTO> param){
+	public GenericResponseDTO addCart (@RequestBody List<CartDTO> param,
+									   @RequestHeader("Authorization") String authorizationHeader){
+		String userName = tokenUtil.getUserNameFromToken(authorizationHeader.split(" ")[1]);
 		GenericResponseDTO responseDTO = new GenericResponseDTO();
 
+
+
 		try {
-			cartService.addCart(param,"test");
+			cartService.addCart(param,userName);
 		}catch (Exception e){
 			return responseDTO.errorResponse(400,e.getMessage());
 		}
@@ -35,7 +41,7 @@ public class CartController {
 	public GenericResponseDTO getByUser (@RequestHeader("Authorization") String authorizationHeader){
 		String userName = tokenUtil.getUserNameFromToken(authorizationHeader.split(" ")[1]);
 		GenericResponseDTO responseDTO = new GenericResponseDTO();
-		return responseDTO.successResponse(cartService.findByUserName(userName));
+		return responseDTO.successResponse(cartService.getCart(userName));
 	}
 
 	@PostMapping("/order")

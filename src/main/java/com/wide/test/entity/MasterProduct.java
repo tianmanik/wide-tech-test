@@ -11,7 +11,7 @@ import lombok.Setter;
 public class MasterProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "master_product_id_seq_generator")
-    @SequenceGenerator(name = "master_product_seq_generator", sequenceName = "master_product_id_seq", allocationSize=1)
+    @SequenceGenerator(name = "master_product_id_seq_generator", sequenceName = "master_product_id_seq", allocationSize=1)
     @Column(name = "id")
     private Long id;
 
